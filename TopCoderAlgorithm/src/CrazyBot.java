@@ -1,11 +1,4 @@
-//import java.awt.Point;
-//import java.util.ArrayList;
-
 public class CrazyBot {
-	
-//	public static double e, w, s, n;
-//	public static int totalStep;
-//	public static double totalPro;
 	
 	public static void main(String[] args){
 		int n=2, east = 25, west = 25, south = 25, north= 25;
@@ -43,65 +36,4 @@ public class CrazyBot {
 		
 		return ret;
 	}
-	
-//	public static double getProbability(int length, int east, int west, int south, int north){
-//		
-//		e = east/100;
-//		w = west/100;
-//		s = south/100;
-//		n = north/100;
-//		totalPro = 0;
-//		totalStep = length;
-//		double pro = 1;
-//		
-//		Point start = new Point(0, 0);
-//		ArrayList<Point> history = new ArrayList<Point>();
-//		history.add(start);
-//		moveTo(length, pro, history);
-//		
-//		return totalPro;
-//	}
-//	
-//	static void moveTo(int leftStep, double pro, ArrayList<Point> history){
-//		
-//		Point lastPoint = history.get(history.size()-1);
-//		
-//		for(int i=history.size()-2; i>=0; i++){
-//			if(history.get(i).x == lastPoint.x && history.get(i).y == lastPoint.y){
-//				return;
-//			}
-//		}
-//		
-//		if(leftStep == 0){
-//			totalPro += pro;
-//			return;
-//		}else {
-//			leftStep--;
-//			
-//			for(int i=0; i<4; i++){
-//				Point point = null;
-//				double nextPro = pro;
-//				switch(i){
-//				case 1:
-//					point = new Point(lastPoint.x+1, lastPoint.y);
-//					nextPro *= e;
-//					break;
-//				case 2:
-//					point = new Point(lastPoint.x-1, lastPoint.y);
-//					nextPro *= w;
-//					break;
-//				case 3:
-//					point = new Point(lastPoint.x, lastPoint.y+1);
-//					nextPro *= s;
-//					break;
-//				case 4:
-//					point = new Point(lastPoint.x, lastPoint.y-1);
-//					nextPro *= n;
-//					break;
-//				}
-//				history.add(point);
-//				moveTo(leftStep, nextPro, history);
-//			}
-//		}
-//	}
 }

@@ -45,8 +45,10 @@ public class Knapsack {
 	}
 	
 	static void calculate(){
+		count = 0;
 		for(int i=0; i<ws.length; i++){
 			for(int j=0; j<=maxw; j++){
+				count++;
 				int weight = ws[i];
 				int price = ps[i];
 				
@@ -70,7 +72,9 @@ public class Knapsack {
 			newKnapsack(i, 0);
 		}
 		System.out.println(newCount);
-		System.out.println();
+		
+		calculate();
+		System.out.println(count);
 		
 //		calc();
 //		calculate();

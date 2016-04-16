@@ -9,19 +9,18 @@ public class QuickSortCopy {
 	}
 	
 	static int partition(int[] dataset, int left, int right){
-		
 		int first = left;
 		int pivot = dataset[left++];
 		
-		while(left <= right){
-			while(dataset[left] <= pivot && left < right){
+		while(left<=right){
+			while(dataset[left]<= pivot && left<right){
 				left++;
 			}
-			while(pivot < dataset[right] && left <= right){
+			while(pivot < dataset[right] && left<= right){
 				right--;
 			}
 			
-			if(left < right){
+			if(left<right){
 				swap(dataset, left, right);
 			}else break;
 		}
@@ -32,14 +31,12 @@ public class QuickSortCopy {
 	}
 	
 	static void quicksort(int[] dataset, int left, int right){
-		if(left<right){
+		if(left < right){
 			int middle = partition(dataset, left, right);
-			
 			quicksort(dataset, left, middle-1);
 			quicksort(dataset, middle+1, right);
 		}
 	}
-	
 	
 	/**
 	 * @param args

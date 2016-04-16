@@ -2,11 +2,12 @@ package Normal.TopCoder;
 
 public class BadNeighbors {
 	
-	static int[] donations = {94, 40, 49, 65, 21, 21, 106, 80, 92, 81, 679, 4, 61, 6, 237, 12, 72, 74, 29, 95, 265, 35, 47, 1, 61, 397, 52, 72, 37, 51, 1, 81, 45, 435, 7, 36, 57, 86, 81, 71};
+//	static int[] donations = {94, 40, 49, 65, 21, 21, 106, 80, 92, 81, 679, 4, 61, 6, 237, 12, 72, 74, 29, 95, 265, 35, 47, 1, 61, 397, 52, 72, 37, 51, 1, 81, 45, 435, 7, 36, 57, 86, 81, 71};
+	static int[] donations = {10, 0, 1};
 	static int[] total = new int[donations.length];
-	
+	static int count = 0;
 	static int getTotalDonations(int here, int startAt){
-		
+		count++;
 		if(here>=donations.length) return 0;
 		if(here == donations.length-1 && startAt == 0) return 0;
 		if(total[here]!=0) return total[here];
@@ -45,5 +46,6 @@ public class BadNeighbors {
 		
 		System.out.println(result);
 		System.out.println(res);
+		System.out.println(count);
 	}
 }

@@ -4,12 +4,31 @@ public class CorporationSalary {
 	
 	static long[] salaries;
 	
+	static long getSal(String[] relations, int num){
+		if(salaries[num] == 0){
+			long salary = 0;
+			boolean isManager = false;
+			for(int i=0; i<relations.length; i++){
+				if(relations[num].charAt(i) == 'Y'){
+					salary += getSal(relations, i);
+					isManager = true;
+				}
+			}
+			
+			if(!isManager) salary = 1;
+			salaries[num] = salary;
+		}
+		
+		return salaries[num];
+	}
+	
 	static long totalSalary(String[] relations){
 		salaries = new long[relations.length];
 		
 		long total = 0;
 		for(int i =0; i<relations.length; i++){
-			total += getSalary(i, relations);
+//			total += getSalary(i, relations);
+			total += getSal(relations, i);
 		}
 		
 		return total;

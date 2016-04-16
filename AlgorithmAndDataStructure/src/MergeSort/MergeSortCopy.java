@@ -2,29 +2,25 @@ package MergeSort;
 
 public class MergeSortCopy {
 	
-	static void mergesort(int[] dataset, int start, int end){
-		int middle = (start+end)/2;
-		if(start < end){
-			mergesort(dataset, start, middle);
-			mergesort(dataset, middle+1, end);
+	static void mergesort(int[] dataset, int left, int right){
+		if(left < right){
+			int middle = (left+right)/2;
 			
-			merge(dataset, start, middle, end);
+			mergesort(dataset, left, middle);
+			mergesort(dataset, middle+1, right);
+			
+			merge(dataset, left, middle, right);
 		}
 	}
 	
 	static void merge(int[] dataset, int start, int middle, int end){
-		int length = end - start + 1;
-		int left = start;
-		int right = middle+1;
-		int dest = 0;
+		int left = start, right = middle+1, dest = 0, length = end-start+1;
 		int[] sorted = new int[length];
 		
-		while((left<=middle) && (right<= end)){
-			if(dataset[left]<dataset[right]){
+		while(left <= middle && right<=end){
+			if(dataset[left]<=dataset[right]){
 				sorted[dest++] = dataset[left++];
-			}else {
-				sorted[dest++] = dataset[right++];
-			}
+			}else sorted[dest++] = dataset[right++];
 		}
 		
 		while(left<=middle){

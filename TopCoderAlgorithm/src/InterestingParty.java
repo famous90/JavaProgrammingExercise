@@ -10,11 +10,36 @@ class InterestingParty {
 		int result = bestInvitation(first, second);
 		
 		System.out.println(result);
+		System.out.println(bestInt(first, second));
 //		System.out.print("{ ");
 //		for(int i=0; i<result.length; i++){
 //			System.out.print(result[i]+" ");
 //		}
 //		System.out.print("}");
+	}
+	
+	static int bestInt(String[] first, String[] second){
+		HashMap<String, Integer> hash = new HashMap<String, Integer>();
+		
+		for(int i=0; i<first.length; i++){
+			if(hash.containsKey(first[i])){
+				hash.put(first[i], hash.get(first[i])+1);
+			}else {
+				hash.put(first[i], 1);
+			}			
+			if(hash.containsKey(second[i])){
+				hash.put(second[i], hash.get(second[i])+1);
+			}else {
+				hash.put(second[i], 1);
+			}			
+		}
+		
+		int max = 0;
+		for(String key: hash.keySet()){
+			max = Math.max(max, hash.get(key));
+		}
+		
+		return max;
 	}
 	
 	public static int bestInvitation(String[] first, String[] second){

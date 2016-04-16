@@ -11,6 +11,54 @@ public class MazeMaker {
 		int result = longestPath(maze, startRow, startCol, moveRow, moveCol);
 		
 		System.out.println(result);
+		System.out.println(longPath(maze, startRow, startCol, moveRow, moveCol));
+	}
+	
+	static int longPath(String[] maze, int startRow, int startCol, int[] moveRow, int[] moveCom){
+		
+		int height = maze.length;
+		int width = maze[0].length();
+		int[][] board = new int[height][width];
+		
+		Queue<Integer> qy = new LinkedList<Integer>();
+		Queue<Integer> qx = new LinkedList<Integer>();
+		qy.add(startRow);
+		qx.add(startCol);
+		board[startRow][startCol] = 1;
+		
+		while(!qx.isEmpty()){
+			int x = qx.poll();
+			int y = qy.poll();
+			
+			for(int i=0; i<moveRow.length; i++){
+				
+				int nextX = x+moveCom[i];  
+				int nextY = y + moveRow[i];
+				
+				if(nextX<0 || nextX>=width || nextY<0 || nextY >= height){
+					continue;
+				}
+				if(board[nextY][nextX] != 0 || maze[nextY].charAt(nextX) == 'X'){
+					continue;
+				}
+				
+				qx.add(nextX);
+				qy.add(nextY);
+				board[nextY][nextX] = board[y][x]+1;
+			}
+		}
+		
+		int max = 0;
+		for(int i=0; i<height; i++){
+			for(int j=0; j<width; j++){
+				if(maze[i].charAt(j) == '.'){
+					if(board[i][j] == 0) return -1;
+					else max = Math.max(max, board[i][j]);
+				}
+			}
+		}
+		
+		return max-1;
 	}
 	
 	public static int longestPath(String[] maze, int startRow, int startCol, int[] moveRow, int[] moveCol){

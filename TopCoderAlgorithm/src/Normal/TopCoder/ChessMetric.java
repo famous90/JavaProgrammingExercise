@@ -56,8 +56,8 @@ public class ChessMetric {
 		int[] end = {0, 99};
 		int numMoves = 50;
 		dp = new long[size][size][numMoves];
-		long result = howMany(size, start, end, numMoves);
-//		long result = newHowLong(size, start, end, numMoves);
+//		long result = howMany(size, start, end, numMoves);
+		long result = newHowLong(size, start, end, numMoves);
 		
 		System.out.println(result);
 	}
@@ -72,6 +72,7 @@ public class ChessMetric {
 		for(int i=1; i<= numMoves; i++){
 			for(int x=0; x<size; x++){
 				for(int y=0; y<size; y++){
+					if(ways[x][y][i-1] == 0) continue;
 					for(int j=0; j<moveX.length; j++){
 						int nx = x + moveX[j];
 						int ny = y + moveY[j];
